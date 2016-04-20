@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Java中正则表达式Matcher的入门使用 | 一蓑烟雨任平生的blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="场景
+开发日常中，我们常常需要处理字符串。处理方式多种多样，今天来学一个字符串处理利器。
+注：掌握它需要你有正则表达式的基础
+比如abc@qq.com取abc的值。我们可以有多种的处理方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中正则表达式Matcher的入门使用">
+<meta property="og:url" content="http://ysyyrps.github.io/2016/04/20/first-to-matcher/index.html">
+<meta property="og:site_name" content="一蓑烟雨任平生的blog">
+<meta property="og:description" content="场景
+开发日常中，我们常常需要处理字符串。处理方式多种多样，今天来学一个字符串处理利器。
+注：掌握它需要你有正则表达式的基础
+比如abc@qq.com取abc的值。我们可以有多种的处理方式。">
+<meta property="og:updated_time" content="2016-04-20T13:10:15.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中正则表达式Matcher的入门使用">
+<meta name="twitter:description" content="场景
+开发日常中，我们常常需要处理字符串。处理方式多种多样，今天来学一个字符串处理利器。
+注：掌握它需要你有正则表达式的基础
+比如abc@qq.com取abc的值。我们可以有多种的处理方式。">
+  
+    <link rel="alternative" href="/atom.xml" title="一蓑烟雨任平生的blog" type="application/atom+xml">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/touxiang.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">左慈 zuoci</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/随想/">随想</a></li>
+				        
+							<li><a href="/categories/工具/">工具</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://longmore.github.io/index.html">我朋友的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">爱装逼，爱代码，想变胖的瘦子</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">左慈 zuoci</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/touxiang.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">左慈 zuoci</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/随想/">随想</a></li>
+		        
+					<li><a href="/categories/工具/">工具</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-first-to-matcher" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/20/first-to-matcher/" class="article-date">
+  	<time datetime="2016-04-20T13:04:22.000Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java中正则表达式Matcher的入门使用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><ul>
+<li>开发日常中，我们常常需要处理字符串。处理方式多种多样，今天来学一个字符串处理利器。</li>
+<li>注：掌握它需要你有正则表达式的基础</li>
+<li>比如abc@qq.com取abc的值。我们可以有多种的处理方式。<a id="more"></a></li>
+<li><p>方式1:substring</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">substring</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> index=str.indexOf(<span class="string">"@"</span>);</span><br><span class="line">    String result=str.substring(<span class="number">0</span>,index);</span><br><span class="line">    System.out.println(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式2：split</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">    String strArray[]=str.split(<span class="string">"@"</span>);</span><br><span class="line">    System.out.println(strArray[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式3：matcher</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">matcher</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    Pattern pattern = Pattern.compile(<span class="string">"([abc]&#123;3&#125;)@qq.com"</span>);</span><br><span class="line">    Matcher matcher = pattern.matcher(str);</span><br><span class="line">    <span class="keyword">while</span> (matcher.find()) &#123;</span><br><span class="line">        System.out.println(matcher.group(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="结果比对"><a href="#结果比对" class="headerlink" title="结果比对"></a>结果比对</h1><h2 id="上面三个输出结果都是"><a href="#上面三个输出结果都是" class="headerlink" title="上面三个输出结果都是"></a>上面三个输出结果都是</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结果相同,但复杂度更不相同。甚至第一种更简单，那我们为什么要学Matcher呢?</li>
+<li>正则表达式是一门比较奇特的语言，平时好像没什么大用，甚至给人感觉杀鸡用牛刀的感觉</li>
+<li>但有时候遇到棘手的问题，它则会把问题变得更加简单。就感觉是遇强则强，遇弱则弱的感觉。<h1 id="放大问题"><a href="#放大问题" class="headerlink" title="放大问题"></a>放大问题</h1></li>
+<li><p>我们尝试要取这样的一份数据，从中获取有效的邮箱的用户名，为了加大难度，假设它有1W条数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;abc@qq.com,abcd,51545@qq.com,bae@163.com,:ar13451,dar@gmail.com,a343..@qq.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这时候用方法1和方法2能解决问题吗？应该可以吧，但我不会弄。我来尝试用方法3来解决它</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">matcher</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    Pattern pattern = Pattern.compile(<span class="string">"([a-zA-Z\\d]+)@[a-zA-Z\\d]+.[a-zA-Z\\d]+"</span>);</span><br><span class="line">    Matcher matcher = pattern.matcher(str);</span><br><span class="line">    <span class="keyword">while</span> (matcher.find()) &#123;</span><br><span class="line">        System.out.println(matcher.group(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">abc</span><br><span class="line">51545</span><br><span class="line">Bae</span><br><span class="line">dar</span><br></pre></td></tr></table></figure></p>
+<h1 id="Matcher类的主要方法介绍"><a href="#Matcher类的主要方法介绍" class="headerlink" title="Matcher类的主要方法介绍"></a>Matcher类的主要方法介绍</h1><h2 id="group组"><a href="#group组" class="headerlink" title="group组"></a>group组</h2><ul>
+<li>我们在刚才在使用的时候，有输出group(1),那group指什么呢？group指的匹配到的组，比如刚才</li>
+<li>在处理<strong>“abc@qq.com”</strong>时，group(0)代表是匹配到的是整个正则匹配的值，即<strong>“abc@qq.com”</strong></li>
+<li>然后在我们的正则表达式<strong>“([abc]{3})@qq.com”</strong>中有个括号，包着<strong>[abc]{3}</strong>，那么**[abc]{3}</li>
+<li>匹配到的就是group(1)，因为abc符合它，所以输出abc。那如果再正则中的qq加上括号，是不是gropu(2)</li>
+<li><p>输出qq吗？让我们验证下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">matcher</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    Pattern pattern = Pattern.compile(<span class="string">"([abc]&#123;3&#125;)@(qq)(.(com))"</span>);</span><br><span class="line">    Matcher matcher = pattern.matcher(str);</span><br><span class="line">    <span class="keyword">while</span> (matcher.find()) &#123;</span><br><span class="line">        System.out.println(matcher.group(<span class="number">0</span>));</span><br><span class="line">        System.out.println(matcher.group(<span class="number">1</span>));</span><br><span class="line">        System.out.println(matcher.group(<span class="number">2</span>));</span><br><span class="line">        System.out.println(matcher.group(<span class="number">3</span>));</span><br><span class="line">        System.out.println(matcher.group(<span class="number">4</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不小心加了这么多括号，这边括号中还包含着括号，那么group的数字分别匹配哪个呢？</p>
+</li>
+<li><p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">abc@qq.com</span><br><span class="line">abc</span><br><span class="line">qq</span><br><span class="line">.com</span><br><span class="line">com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这时候我们大概可以证实自己是对的，然后也可以推理出，group对应的括号是正常的从左往右数的。</p>
+<h3 id="小结下："><a href="#小结下：" class="headerlink" title="小结下："></a>小结下：</h3></li>
+<li>group(0)表示匹配到的全部字符，group(n) n代表第几个括号中匹配的字符</li>
+<li>注：此篇内容较多，后续将有其他内容，介绍一些Matcher的其他API方法</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/20/some-notice-about-work/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">工作中的几个注意点让你效率翻倍</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="first-to-matcher" data-title="Java中正则表达式Matcher的入门使用" data-url="http://ysyyrps.github.io/2016/04/20/first-to-matcher/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ysyyrps"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 左慈 zuoci
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
