@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>单例模式详解 | 一蓑烟雨任平生的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="讲到设计模式，你可能最先想到的模式可能就是单例模式。
-可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的。
-那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍。">
+  <meta name="description" content="讲到设计模式，你可能最先想到的模式可能就是单例模式
+可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的
+那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单例模式详解">
 <meta property="og:url" content="http://ysyyrps.github.io/2016/04/28/singleton/index.html">
 <meta property="og:site_name" content="一蓑烟雨任平生的blog">
-<meta property="og:description" content="讲到设计模式，你可能最先想到的模式可能就是单例模式。
-可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的。
-那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍。">
-<meta property="og:updated_time" content="2016-04-28T04:02:25.160Z">
+<meta property="og:description" content="讲到设计模式，你可能最先想到的模式可能就是单例模式
+可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的
+那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍">
+<meta property="og:updated_time" content="2016-04-28T04:08:02.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式详解">
-<meta name="twitter:description" content="讲到设计模式，你可能最先想到的模式可能就是单例模式。
-可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的。
-那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍。">
+<meta name="twitter:description" content="讲到设计模式，你可能最先想到的模式可能就是单例模式
+可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的
+那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍">
   
     <link rel="alternative" href="/atom.xml" title="一蓑烟雨任平生的blog" type="application/atom+xml">
   
@@ -237,19 +237,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>讲到设计模式，你可能最先想到的模式可能就是单例模式。</li>
-<li>可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的。</li>
-<li>那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍。<a id="more"></a>
-<h2 id="什么时候用"><a href="#什么时候用" class="headerlink" title="什么时候用"></a>什么时候用</h2></li>
+<li>讲到设计模式，你可能最先想到的模式可能就是单例模式</li>
+<li>可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的</li>
+<li>那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍<a id="more"></a>
+<h1 id="什么时候用"><a href="#什么时候用" class="headerlink" title="什么时候用"></a>什么时候用</h1></li>
 <li>单例模式主要的目的，一个是防止创建多个实例造成资源的浪费，同时解决访问因为多次运行实例</li>
 <li>因不是调用同个对象造成的结果错误。<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3></li>
 <li>工具类、数据库实例、某些全局配置（配置文件）、缓存等，我们一般只需要创建一个对象即可（</li>
 <li>为了防止资源浪费）,同时要保证操作的是同个对象。假设缓存里面存着商品数量的信息，假设每次进货</li>
-<li>和出货不是取同一个缓存里面的同一个商品数量的信息，就会造成数据错误。<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2></li>
+<li>和出货不是取同一个缓存里面的同一个商品数量的信息，就会造成数据错误<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1></li>
 <li>单例模式要保证只存在一个对象<h3 id="不允许别人实例"><a href="#不允许别人实例" class="headerlink" title="不允许别人实例"></a>不允许别人实例</h3></li>
 <li>单例类自身的构造函数私有化<h3 id="自己实例自己的对象"><a href="#自己实例自己的对象" class="headerlink" title="自己实例自己的对象"></a>自己实例自己的对象</h3></li>
 <li>在自己类中new出来<h3 id="单例类自己实例，提供给其他类调用"><a href="#单例类自己实例，提供给其他类调用" class="headerlink" title="单例类自己实例，提供给其他类调用"></a>单例类自己实例，提供给其他类调用</h3></li>
-<li>提供一个方法给其他类自己的实例<h2 id="几种写法"><a href="#几种写法" class="headerlink" title="几种写法"></a>几种写法</h2></li>
+<li>提供一个方法给其他类自己的实例<h1 id="几种写法"><a href="#几种写法" class="headerlink" title="几种写法"></a>几种写法</h1></li>
 <li>大致有以下这些写法，我们就来看看这些的实现思路和优缺点</li>
 <li>懒汉式</li>
 <li>饿汉式（包括双重校验锁验证）</li>
@@ -283,7 +283,7 @@
 <li><p>介绍： 用同步代码块增加线程安全，懒加载</p>
 </li>
 <li>优点： 懒加载，线程安全</li>
-<li>缺点： 当启动时，多线程同时进入if(instance==null)时，会出现多个实例。</li>
+<li>缺点： 当启动时，多线程同时进入if(instance==null)时，会出现多个实例</li>
 <li><p>总评： 效率提升，但无法实现单例，不可用</p>
 <h3 id="懒汉式-（双重检查，推荐用）"><a href="#懒汉式-（双重检查，推荐用）" class="headerlink" title="懒汉式 （双重检查，推荐用）"></a>懒汉式 （双重检查，推荐用）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 调用</span></span><br><span class="line">        Singleton instance = Singleton.getInstance();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -297,7 +297,7 @@
 <li><p>介绍： 利用类自身的加载机制，在饿汉时，类一但被加载，则就实例化对象。而静态内部类在类加载时不会立即实例化</p>
 </li>
 <li>，只有在类调用获取实例的方法时才去实例对象，从而实现了懒加载。同时类静态属性只会在类加载的初始化，同时初始</li>
-<li>化时其他线程无法进入，所以保证了线程安全。</li>
+<li>化时其他线程无法进入，所以保证了线程安全</li>
 <li>优点： 懒加载，线程安全，效率高</li>
 <li>缺点： 暂无</li>
 <li><p>总评： 推荐使用</p>
@@ -306,7 +306,7 @@
 <li><p>介绍：利用jdk1.5之后的枚举来实现单例模式，避免了多线程同步的问题，还能避免利用反射修改构造方法来创建对象</p>
 </li>
 <li>优点：线程同步、效率高、避免反序列化 </li>
-<li>缺点：不是new创建</li>
+<li>缺点：暂无</li>
 <li>总评：最推荐使用，假如不是jdk1.5之前的都推荐使用 </li>
 </ul>
 
