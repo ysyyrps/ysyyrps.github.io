@@ -9,7 +9,7 @@
   <meta name="description" content="具体场景
 开发时常常会碰到生产线，测试线，本地线因为三个配置的不同，每次打包要重新修改相应的配置文件，
 但可能要修改的地方比较多，很容易漏掉一些。但无论漏掉哪些都是致命的，故这边提供一个maven插件
-主要用于解决这方面的问题。">
+主要用于解决这方面的问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用maven插件进行不同环境的打包">
 <meta property="og:url" content="http://ysyyrps.github.io/2016/05/11/maven-package-for-different-setting/index.html">
@@ -17,14 +17,14 @@
 <meta property="og:description" content="具体场景
 开发时常常会碰到生产线，测试线，本地线因为三个配置的不同，每次打包要重新修改相应的配置文件，
 但可能要修改的地方比较多，很容易漏掉一些。但无论漏掉哪些都是致命的，故这边提供一个maven插件
-主要用于解决这方面的问题。">
-<meta property="og:updated_time" content="2016-05-11T12:07:57.324Z">
+主要用于解决这方面的问题">
+<meta property="og:updated_time" content="2016-05-11T12:11:09.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用maven插件进行不同环境的打包">
 <meta name="twitter:description" content="具体场景
 开发时常常会碰到生产线，测试线，本地线因为三个配置的不同，每次打包要重新修改相应的配置文件，
 但可能要修改的地方比较多，很容易漏掉一些。但无论漏掉哪些都是致命的，故这边提供一个maven插件
-主要用于解决这方面的问题。">
+主要用于解决这方面的问题">
   
     <link rel="alternative" href="/atom.xml" title="一蓑烟雨任平生的blog" type="application/atom+xml">
   
@@ -85,7 +85,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -242,17 +242,17 @@
         <h2 id="具体场景"><a href="#具体场景" class="headerlink" title="具体场景"></a>具体场景</h2><ul>
 <li>开发时常常会碰到生产线，测试线，本地线因为三个配置的不同，每次打包要重新修改相应的配置文件，</li>
 <li>但可能要修改的地方比较多，很容易漏掉一些。但无论漏掉哪些都是致命的，故这边提供一个maven插件</li>
-<li>主要用于解决这方面的问题。<a id="more"></a>
+<li>主要用于解决这方面的问题<a id="more"></a>
 <h2 id="使用要求"><a href="#使用要求" class="headerlink" title="使用要求"></a>使用要求</h2></li>
 <li>项目必须是maven项目<h2 id="例子实现"><a href="#例子实现" class="headerlink" title="例子实现"></a>例子实现</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3></li>
 <li><p>本地线： 在src/main/resource/db.properties下配置文件为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jdbc.username=local_user</span><br><span class="line">jdbc.password=local_password</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试线： 我们想要打包成测试线的时候，希望将这两个参数变成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.username=test_user</span><br><span class="line">jdbc.password=test_password</span><br><span class="line">``` </span><br><span class="line">- 正式线: 我们想要的效果是</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jdbc.username=test_user</span><br><span class="line">jdbc.password=test_password</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- 正式线: 我们想要的效果是</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>jdbc.username=offical_user<br>jdbc.password=offical_password<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### 步骤</span><br><span class="line"></span><br><span class="line">1. 在src/main/portable下创建test.xml和offical.xml，内容如下显示</span><br><span class="line"> test.xml</span><br></pre></td></tr></table></figure></p>
+<p>jdbc.username=offical_user<br>jdbc.password=offical_password<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 步骤</span><br><span class="line"></span><br><span class="line">1. 在src/main/portable下创建test.xml和offical.xml，内容如下显示</span><br><span class="line"> test.xml</span><br></pre></td></tr></table></figure></p>
 <p><portable-config><br>  <config-file path="WEB-INF/classes/db.properties"><br>    <replace key="jdbc.username">test_user</replace><br>    <replace key="jdbc.password">test_password</replace><br>  </config-file><br></portable-config><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">offical.xml</span><br></pre></td></tr></table></figure></p>
 <p><portable-config><br>  <config-file path="WEB-INF/classes/db.properties"><br>    <replace key="jdbc.username">offical_user</replace><br>    <replace key="jdbc.password">offical_password</replace><br>  </config-file><br></portable-config><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注：maven打包后,db.properties实际上是在**WEB-INF/classes/**下,所以路径这么填</span><br><span class="line">2. 在pom.xml中配置插件</span><br></pre></td></tr></table></figure></p>
 <p><plugin><br>  <groupid>com.juvenxu.portable-config-maven-plugin</groupid><br>  <artifactid>portable-config-maven-plugin</artifactid><br>  <version>1.1.5</version><br>  <executions><br>    <execution><br>      <goals><br>        <goal>replace-package</goal><br>      </goals><br>    </execution><br>  </executions><br></plugin><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 正式使用</span><br><span class="line">- 在maven命令后增加 **-DportableConfig=&quot;src/main/portable/xxx.xml&quot;**即可</span><br><span class="line">- 这边xxx是指要替换的文件</span><br><span class="line">- 假如打的是本地线则不用加上面参数，正常执行相应命令即可</span><br><span class="line">- 打包测试线</span><br></pre></td></tr></table></figure></p>
