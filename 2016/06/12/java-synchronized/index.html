@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>一蓑烟雨任平生的blog</title>
+  <title>java synchronized详解 | 一蓑烟雨任平生的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一蓑烟雨任平生的blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一蓑烟雨任平生的blog">
-<meta property="og:url" content="http://ysyyrps.github.io/index.html">
+  <meta name="description" content="锁互斥锁
+给某个对象加上互斥锁之后，那么这个对象在任何时刻，只能有一个线程访问该对象。假如有多个线程都想访问该对象，那么只能等待正在访问该对象的那个线程访问完毕。Java synchronized使用方式例子类12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java synchronized详解">
+<meta property="og:url" content="http://ysyyrps.github.io/2016/06/12/java-synchronized/index.html">
 <meta property="og:site_name" content="一蓑烟雨任平生的blog">
-<meta property="og:description" content="一蓑烟雨任平生的blog">
+<meta property="og:description" content="锁互斥锁
+给某个对象加上互斥锁之后，那么这个对象在任何时刻，只能有一个线程访问该对象。假如有多个线程都想访问该对象，那么只能等待正在访问该对象的那个线程访问完毕。Java synchronized使用方式例子类12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152">
+<meta property="og:updated_time" content="2016-06-12T11:07:55.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一蓑烟雨任平生的blog">
-<meta name="twitter:description" content="一蓑烟雨任平生的blog">
+<meta name="twitter:title" content="java synchronized详解">
+<meta name="twitter:description" content="锁互斥锁
+给某个对象加上互斥锁之后，那么这个对象在任何时刻，只能有一个线程访问该对象。假如有多个线程都想访问该对象，那么只能等待正在访问该对象的那个线程访问完毕。Java synchronized使用方式例子类12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152">
   
     <link rel="alternative" href="/atom.xml" title="一蓑烟雨任平生的blog" type="application/atom+xml">
   
@@ -192,9 +196,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-java-synchronized" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java-synchronized" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/06/12/java-synchronized/" class="article-date">
@@ -210,12 +212,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/12/java-synchronized/">java synchronized详解</a>
+    <h1 class="article-title" itemprop="name">
+      java synchronized详解
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/java/">java</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -271,477 +284,68 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/07/swagger-base/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swagger+Springmvc打造最轻松的api文档</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-
-
-  
-    <article id="post-swagger-base" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/07/swagger-base/" class="article-date">
-  	<time datetime="2016-06-07T11:52:41.000Z" itemprop="datePublished">2016-06-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/07/swagger-base/">Swagger+Springmvc打造最轻松的api文档</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li>随着项目越来越大，大家的分工越来越明确，前后端之间的沟通成本就变得越来越高。常常后端写完接口之后，还要花时间整理接口文档给前端。但接口有时候出错，或者进行了轻微的调整，那就是一件非常麻烦的事情了。不但要先更新接口文档，还要通知前端哪些要改。另外总因为文档是滞后的，所以效率变得很低。所以这时候swagger的重要性就突显出来了，它能够根据你项目每一次更新，而自动更新接口文档，并提供在线接口测试，而代码仅仅是增加几行注解这么简单！
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/07/swagger-base/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="java-synchronized" data-title="java synchronized详解" data-url="http://ysyyrps.github.io/2016/06/12/java-synchronized/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ysyyrps"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-  
-    <article id="post-maven-package-for-different-setting" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/11/maven-package-for-different-setting/" class="article-date">
-  	<time datetime="2016-05-11T11:52:41.000Z" itemprop="datePublished">2016-05-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/11/maven-package-for-different-setting/">使用maven插件进行不同环境的打包</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="具体场景"><a href="#具体场景" class="headerlink" title="具体场景"></a>具体场景</h2><ul>
-<li>开发时常常会碰到生产线，测试线，本地线因为三个配置的不同，每次打包要重新修改相应的配置文件，</li>
-<li>但可能要修改的地方比较多，很容易漏掉一些。但无论漏掉哪些都是致命的，故这边提供一个maven插件</li>
-<li>主要用于解决这方面的问题
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/11/maven-package-for-different-setting/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-singleton" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/28/singleton/" class="article-date">
-  	<time datetime="2016-04-28T03:59:11.000Z" itemprop="datePublished">2016-04-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/28/singleton/">单例模式详解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>讲到设计模式，你可能最先想到的模式可能就是单例模式</li>
-<li>可能仅仅是因为它代码量最少，但其实开发中单例模式算是非常常用，且有重要作用的</li>
-<li>那么我们时候会用到它，用的时候要怎么用，要注意什么呢，这边将一一介绍
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/28/singleton/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-first-to-matcher" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/20/first-to-matcher/" class="article-date">
-  	<time datetime="2016-04-20T13:04:22.000Z" itemprop="datePublished">2016-04-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/20/first-to-matcher/">Java中正则表达式Matcher的入门使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><ul>
-<li>开发日常中，我们常常需要处理字符串。处理方式多种多样，今天来学一个字符串处理利器。</li>
-<li>注：掌握它需要你有正则表达式的基础</li>
-<li>比如abc@qq.com取abc的值。我们可以有多种的处理方式。
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/java/">java</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/20/first-to-matcher/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-some-notice-about-work" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/20/some-notice-about-work/" class="article-date">
-  	<time datetime="2016-04-20T11:55:20.000Z" itemprop="datePublished">2016-04-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/20/some-notice-about-work/">工作中的几个注意点让你效率翻倍</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/images/work.jpg" alt="努力工作"></p>
-<ul>
-<li>保证良好的作息，一个健康的身体是所有效率的保证</li>
-<li>一台mac或者pc+ssd，外加另外一个外接显示屏</li>
-<li>对问题进行分类，重难点进行特殊标记</li>
-<li>慎重承诺。在承诺时间内没完成比一开始就要求更多时间或者不承诺更让人讨厌
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/20/some-notice-about-work/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vimium-helper" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/17/vimium-helper/" class="article-date">
-  	<time datetime="2016-04-17T05:29:25.000Z" itemprop="datePublished">2016-04-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/17/vimium-helper/">Vimium让你用键盘浏览网页</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>有学过vim的人，常常幻想所有的工具是不是都能用vim操作模式来呢？电影里黑客操作电脑从来不用鼠标，敲敲键盘就搞定了，是不是超级羡慕呢！</li>
-<li>虽然他们操作的是命令界面，那么在浏览页面的时候用可以脱离鼠标，直接用键盘来操作吗？当我发现有Vimium的时候，我惊呆了，居然这么晚才发现这样的利器！那么我们赶紧进入学习吧。
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/工具/">工具</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/17/vimium-helper/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-how_to_be_programer" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/16/how_to_be_programer/" class="article-date">
-  	<time datetime="2016-04-16T13:02:52.941Z" itemprop="datePublished">2016-04-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/16/how_to_be_programer/">如何成为一个优秀的程序员</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/images/haitun.jpg" alt="海豚"></p>
-<ul>
-<li>作为刚步入程序员圈子的我，对未来充满了憧憬和惶恐，憧憬着成为大牛，又惶恐着某天醒来就被时代淘汰。</li>
-<li>于是我寄希望有一些方法能够让我尽快跻身优秀的程序员的行列，以下是我从前辈他们取到的圣经，加上自己的理解，故总结共勉！
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随想/">随想</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/16/how_to_be_programer/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -765,8 +369,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
