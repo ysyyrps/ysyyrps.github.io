@@ -75,7 +75,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -193,6 +193,68 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-java-reentrantlock" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/14/java-reentrantlock/" class="article-date">
+  	<time datetime="2016-06-14T12:14:04.000Z" itemprop="datePublished">2016-06-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/14/java-reentrantlock/">Java 锁 ReentrantLock</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>在之前实现多进程对资源的互斥访问，在jdk1.5之前，我们都是用synchronized实现。现在java提供了lock来实现更灵活的控制。</li>
+<li>synchronized提供对每个对象的隐式监视锁的访问，并强制所有锁获取和释放都要出现在一个块结构中，当获取了多个锁的时候，必须以相反顺序释放。对于synchronized,只要线程运行的代码超出了synchronized语句块范围，锁就会释放。而lock机制必须显示的调用lock的unlock()方法才能释放锁，这让我们可以自由的释放锁。
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/java/">java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/14/java-reentrantlock/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-java-synchronized" class="article article-type-post" itemscope itemprop="blogPost">
   
