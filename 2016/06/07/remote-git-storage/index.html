@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>git��Ǩ�� | 一蓑烟雨任平生的blog</title>
+  <title>git库迁移 | 一蓑烟雨任平生的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="����
-��ʱ������ĿҪ�л�������Ŀ·����ȥ�����������뱣���ɵ���ʷ�ύ��¼���������������µ�git��������������ԭ������ĿǨ�ƹ�ȥ����ʱ������Ҫ�õ���Ǩ���ˡ�">
+  <meta name="description" content="场景
+有时候旧项目要切换到新项目路径上去，而且我们想保留旧的历史提交记录。或者我们有了新的git服务器后，想把原来的项目迁移过去，这时候就需要用到库迁移了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git��Ǩ��">
+<meta property="og:title" content="git库迁移">
 <meta property="og:url" content="http://ysyyrps.github.io/2016/06/07/remote-git-storage/index.html">
 <meta property="og:site_name" content="一蓑烟雨任平生的blog">
-<meta property="og:description" content="����
-��ʱ������ĿҪ�л�������Ŀ·����ȥ�����������뱣���ɵ���ʷ�ύ��¼���������������µ�git��������������ԭ������ĿǨ�ƹ�ȥ����ʱ������Ҫ�õ���Ǩ���ˡ�">
-<meta property="og:updated_time" content="2016-08-10T03:28:33.502Z">
+<meta property="og:description" content="场景
+有时候旧项目要切换到新项目路径上去，而且我们想保留旧的历史提交记录。或者我们有了新的git服务器后，想把原来的项目迁移过去，这时候就需要用到库迁移了。">
+<meta property="og:updated_time" content="2016-08-10T03:37:30.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git��Ǩ��">
-<meta name="twitter:description" content="����
-��ʱ������ĿҪ�л�������Ŀ·����ȥ�����������뱣���ɵ���ʷ�ύ��¼���������������µ�git��������������ԭ������ĿǨ�ƹ�ȥ����ʱ������Ҫ�õ���Ǩ���ˡ�">
+<meta name="twitter:title" content="git库迁移">
+<meta name="twitter:description" content="场景
+有时候旧项目要切换到新项目路径上去，而且我们想保留旧的历史提交记录。或者我们有了新的git服务器后，想把原来的项目迁移过去，这时候就需要用到库迁移了。">
   
     <link rel="alternative" href="/atom.xml" title="一蓑烟雨任平生的blog" type="application/atom+xml">
   
@@ -213,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git��Ǩ��
+      git库迁移
     </h1>
   
 
@@ -237,12 +237,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="����"><a href="#����" class="headerlink" title="����"></a>����</h3><ul>
-<li>��ʱ������ĿҪ�л�������Ŀ·����ȥ�����������뱣���ɵ���ʷ�ύ��¼���������������µ�git��������������ԭ������ĿǨ�ƹ�ȥ����ʱ������Ҫ�õ���Ǩ���ˡ�<a id="more"></a>
-<h3 id="����-1"><a href="#����-1" class="headerlink" title="����"></a>����</h3></li>
-<li>�Ƚ��뵽ԭ���Ĳֿ⣬����û��ԭ���ֿ⣬����clone���ٽ���</li>
-<li>ִ�����µ�����==git remote set-url origin new_url==<br>(����new_urlΪ�²ֿ��ĵ�ַ),�ٽ�������</li>
-<li>��������<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin git@54.238.211.188:/home/git/shop.git</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></li>
+        <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ul>
+<li>有时候旧项目要切换到新项目路径上去，而且我们想保留旧的历史提交记录。或者我们有了新的git服务器后，想把原来的项目迁移过去，这时候就需要用到库迁移了。<a id="more"></a>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3></li>
+<li>先进入到原来的仓库，如果没有原来仓库，请先clone后再进入</li>
+<li>执行以下的命令==git remote set-url origin new_url==<br>(这边new_url为新仓库的地址),再进行推送</li>
+<li>具体例子<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin git@54.238.211.188:/home/git/shop.git</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -299,7 +299,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="remote-git-storage" data-title="git��Ǩ��" data-url="http://ysyyrps.github.io/2016/06/07/remote-git-storage/"></div>
+	<div class="ds-thread" data-thread-key="remote-git-storage" data-title="git库迁移" data-url="http://ysyyrps.github.io/2016/06/07/remote-git-storage/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
