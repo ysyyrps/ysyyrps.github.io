@@ -18,7 +18,7 @@ Grunt用于自动化构建、测试、生成文档的项目管理工具">
 Grunt是一个基于JavaScript上的一个任务管理器
 通过它，可以用JavaScript去执行一些任务，比如验证各种HTML、CSS、JavaScript语法，压缩代码
 Grunt用于自动化构建、测试、生成文档的项目管理工具">
-<meta property="og:updated_time" content="2016-09-22T07:53:18.440Z">
+<meta property="og:updated_time" content="2016-09-22T07:57:17.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Grunt入门（前端自动化）">
 <meta name="twitter:description" content="Grunt特点及用处
@@ -80,12 +80,12 @@ Grunt用于自动化构建、测试、生成文档的项目管理工具">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>Menu</li>
-						<li>Тэги</li>
+						<li>Tags</li>
 						
 						<li>Links</li>
 						
 						
-						<li>О сайте</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -246,19 +246,19 @@ Grunt用于自动化构建、测试、生成文档的项目管理工具">
 <h3 id="入门指南"><a href="#入门指南" class="headerlink" title="入门指南"></a>入门指南</h3><h4 id="安装NodeJs-amp-npm"><a href="#安装NodeJs-amp-npm" class="headerlink" title="安装NodeJs&amp;npm"></a>安装NodeJs&amp;npm</h4></li>
 <li>Grunt和Grunt的插件是依赖于NodeJs和npm。所以我们要先安装<a href="https://nodejs.org/en/" target="_blank" rel="external">nodeJs</a>，再安装npm(npm实际上是NodeJs的包管理器），具体安装此处略。</li>
 <li>Grunt要求Node.js版本高于0.8.0</li>
-<li>安装Grunt前，先更新下npm,执行==npm update -g npm==<h4 id="安装Grunt-cli"><a href="#安装Grunt-cli" class="headerlink" title="安装Grunt-cli"></a>安装Grunt-cli</h4></li>
-<li>在命令行执行==npm install -g grunt-cli==，这个命令会将grunt命令行设置到你的系统路径下，允许你在任何目录执行它<h4 id="CLI如何工作的"><a href="#CLI如何工作的" class="headerlink" title="CLI如何工作的"></a>CLI如何工作的</h4></li>
+<li>安装Grunt前，先更新下npm,执行<strong>npm update -g npm</strong><h4 id="安装Grunt-cli"><a href="#安装Grunt-cli" class="headerlink" title="安装Grunt-cli"></a>安装Grunt-cli</h4></li>
+<li>在命令行执行<strong>npm install -g grunt-cli</strong>，这个命令会将grunt命令行设置到你的系统路径下，允许你在任何目录执行它<h4 id="CLI如何工作的"><a href="#CLI如何工作的" class="headerlink" title="CLI如何工作的"></a>CLI如何工作的</h4></li>
 <li>每次运行grunt的时候，它会通过nodeJs中require()指令系统去寻找本地安装的Grunt。因此你可以在你项目的任意子文件夹执行grunt命令</li>
 <li>如果本地安装的grunt被找到，那么CLI就会载入本地安装的库，从gruntfile获取配置，并执行。<h4 id="处理已存在的Grunt项目"><a href="#处理已存在的Grunt项目" class="headerlink" title="处理已存在的Grunt项目"></a>处理已存在的Grunt项目</h4></li>
 <li>保证Grunt CLI已经安装、并且项目已经配置了<strong>package.json</strong>和<strong>Gruntfile</strong></li>
 </ul>
 <ol>
 <li>目录切换到你项目的根目录</li>
-<li>用==npm install==安装项目的依赖（安装node_modules）</li>
-<li>执行==grunt==</li>
+<li>用=<strong>npm install</strong>安装项目的依赖（安装node_modules）</li>
+<li>执行<strong>grunt</strong></li>
 </ol>
 <ul>
-<li>这些就是我们要做的所有的了。你也可以执行==grunt –help==列出安装grunt的任务列表，但一般来说，更推荐有一个项目的文档。</li>
+<li>这些就是我们要做的所有的了。你也可以执行<strong>grunt –help</strong>列出安装grunt的任务列表，但一般来说，更推荐有一个项目的文档。</li>
 <li>注： npm install 加上–save-dev标志时，在package.json中,插件的版本号前会增加一个波浪号，表示如果插件有更新补丁，它会自动升级,例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;grunt-autoprefixer&quot;: &quot;~3.0.4&quot;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
